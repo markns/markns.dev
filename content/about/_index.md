@@ -1,4 +1,4 @@
-# About me!
+# Hi, I'm Mark!
 
 I am a passionate technologist who loves to work with domain experts to discuss requirements, understand problems deeply, and provide creative and efficient solutions. 
 
