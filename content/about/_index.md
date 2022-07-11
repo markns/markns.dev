@@ -4,8 +4,10 @@ I am a passionate technologist who loves to work with domain experts to discuss 
 
 Highly technical, but always with an eye on the true goals of a project, I'm happy to start working from a blank canvas with architectural sketches on a whiteboard, through consideration of the scalability, performance and security of a solution, all the way down to the nuts and bolts of an implementation itself. 
 
-# Flow Traders, Amsterdam, NL
-### Lead Developer / Team Lead 
+# Experience
+
+### Flow Traders, Amsterdam, NL
+#### Lead Developer / Team Lead 
 ##### Feb 2019 - Jun 2022
 Acqui-hired together with the software assets from Gridarrow. Responsible for global roll out of Gridarrow onto on-prem Kubernetes infrastructure. 
 
@@ -19,8 +21,8 @@ Architect and developer for a next generation real-time risk engine, built with 
 
 Created Kafka to TimescaleDB data pipeline for post-trade analytics by quant and trading users.
 
-# Gridarrow, Amsterdam, NL
-### Co-Founder, CEO
+## Gridarrow, Amsterdam, NL
+#### Co-Founder, CEO
 ##### Jul 2017 - Feb 2019
 
 Co-founded and bootstrapped Gridarrow - "The missing server for Excel" - a multi-tenant cloud-native platform for streaming real-time data into Excel spreadsheets, built using Python, C#, Golang, Angular, Kubernetes and Istio, running on Google Cloud Platform.
@@ -36,8 +38,8 @@ In addition to the growth hacking and customer support required for a bootstrapp
 
 The company's intellectual property was acquired by Flow Traders 1.5 years after founding.
 
-# Optiver, Amsterdam, NL
-### Senior Developer
+## Optiver, Amsterdam, NL
+#### Senior Developer
 ##### Sep 2012 - Jul 2017
 
 **Quantitative Trading team**
@@ -52,8 +54,8 @@ Cloud architecture and big data engineering. Using AWS, Mesos, Spark, Docker and
 - Developed and provided technical training programmes to traders
 - Recruitment
 
-# HSBC, London, UK
-### Senior Analyst Developer
+## HSBC, London, UK
+#### Senior Analyst Developer
 ##### Mar 2006 - Oct 2011
 
 **Prime Services (Equity Prime Brokerage)**
@@ -75,8 +77,8 @@ Cloud architecture and big data engineering. Using AWS, Mesos, Spark, Docker and
 - Various utility spreadsheets for traders - Daily risk monitoring, publication of prices to 3rd party monitors.
 - Change Process - UAT cycles
 
-# Inpharmatica, London, UK
-### Scientist
+## Inpharmatica, London, UK
+#### Scientist
 ##### Sep 2001 - Nov 2003
 
 - Core bioinformatics programmer in team responsible for the development of a genome browser application.
