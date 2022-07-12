@@ -7,12 +7,12 @@ tags = [
     "architecture",
     "kubernetes",
 ]
-draft = false
+draft = true
 +++
 
 # What is a micro PaaS?
 
-The world is a complicated place, and communicating clearly is hard.
+Languages are amazing things.
 For all the beauty of music and dance, neither has the ability to convey information as precisely as human language.
 Sure, there's few better expressions of romantic love than Percy Sledge's [When a Man Loves a Woman](https://www.youtube.com/watch?v=EYb84BDMbi0), or more convincing statements of intergalactic dominance than an enthusiastic performance of [the Hammer dance](https://www.youtube.com/watch?v=keAhk3Lz6E8&t=34s).
 But if you need to give someone directions to the railway station, or explain the poor numbers of the sales unit in the quarterly report, you're _probably_ better off using a human language rather than humming or interpretive dance. 
