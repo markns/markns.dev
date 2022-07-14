@@ -6,6 +6,7 @@ description = "How to build a micro PaaS using Kubernetes and Istio"
 tags = [
     "architecture",
     "kubernetes",
+    "PaaS",
 ]
 draft = false
 +++
@@ -17,19 +18,26 @@ But if you need to give someone directions to the railway station, or explain th
 
 As it is with human to human communication, so it is with human to computer communication.
 Point and click user interfaces, and low-code platforms are extremely capable these days. 
-And who would argue against the spreadsheet being the most important software application of all time (ok, web-browsers we see you, please sit down).
+And who would argue against the spreadsheet being the most important software application of all time (ok, web-browsers we see you, please sit down)?.
 However, in some scenarios, when we need to direct a computer in _precisely_ the manner we desire, there is no substitute for the expressiveness and fidelity of a programming language.
+
+```python
+# If you want to tell your computer you love him/her/it, 
+# you will need a programming language
+while True:
+    i.love(you)
+```
 
 Learning some basic programming is also not that hard. 
 A language like Python has a syntax similar to English, and there are a huge amount of high-quality resources online to help beginners start coding.
 
 Learning the entire discipline of software engineering, on the other hand, can be a life's work.
-Concerns such as security, monitoring, version control, build systems, logging, dependency management, deployment, resource isolation ([and more!](https://en.wikipedia.org/wiki/Non-functional_requirement#Examples)) can easily turn one hour of coding into months of enterprise bureaucracy.
+Non-functional requirements such as security, monitoring, version control, build systems, logging, dependency management, deployment, resource isolation ([and more!](https://en.wikipedia.org/wiki/Non-functional_requirement#Examples)) can easily turn one hour of coding into months of enterprise bureaucracy.
 
 ## Enter the PaaS 
 
 The promise of PaaS's such as Heroku or OpenShift is to increase productivity by enabling engineers to focus on the _development_ of an application. 
-They achieve this by standardising and automating as many services as possible, thereby reducing complexity and lead times.
+They achieve this by standardising and automating as many non-functional requirements as possible, thereby reducing complexity and lead times.
 If you're a developer used to emailing IT to obtain a VM/database on which to run your application and waiting hours/days/weeks for it to be delivered, the empowerment you will feel when handed the keys to a PaaS is priceless.   
 
 However, for the most part, you do still need to be a developer to use these systems. 
@@ -38,7 +46,7 @@ They also require familiarity with the command line, git, databases and other to
 
 For this reason, over the last few years, a new generation of hyper-focused domain-specific micro-PaaS's have been brought to market.
 These systems enable a user to write a tiny amount of code - perhaps just the body of a function - directly in a browser based IDE.
-The user code either has pre-configured access to domain-specific APIs, or may even be written in a Domain Specific Language (DSL) itself.
+The user code either has pre-configured access to domain-specific APIs, or may be written in a Domain Specific Language (DSL) itself.
 
 There are many examples in the crypto space - for example, you can use [Trality](https://www.trality.com/creator/code-editor) to create managed trading bots, and [Remix](https://remix-project.org/) to develop and deploy smart contracts for Ethereum.
 In more traditional finance, [QuantConnect](https://www.quantconnect.com/) is a platform that can be used for backtesting and live-trading automated strategies using Python and C#.
