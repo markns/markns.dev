@@ -1,6 +1,6 @@
 +++
 author = "Mark Nuttall-Smith"
-title = "Architecture of a micro PaaS - part 2"
+title = "Anatomy of a micro PaaS - part 2"
 date = "2022-07-12"
 description = "How to build a micro PaaS using Kubernetes and Istio"
 tags = [
@@ -11,9 +11,9 @@ tags = [
 draft = false
 +++
 
-In [part 1]({{< relref "/posts/architecture-of-a-micro-paas-part1.md" >}}) of this series we discussed why and when a micro-PaaS can be useful. 
+In [part 1]({{< relref "/posts/anatomy-of-a-micro-paas-part1.md" >}}) of this series we discussed why and when a micro-PaaS can be useful. 
 This post will present a specific micro-PaaS use case.
-[Part 3]({{< relref "/posts/architecture-of-a-micro-paas-part3.md" >}}) will show how we can build our platform by customizing Kubernetes through its native extension points. 
+[Part 3]({{< relref "/posts/anatomy-of-a-micro-paas-part3.md" >}}) will show how we can build our platform by customizing Kubernetes through its native extension points. 
 
 ## But first, dancing Bill Gates.
 
@@ -114,4 +114,4 @@ How do we identify users and ensure they are authorized to perform the actions t
 How do we make sure the behaviour of one tenant in the system doesn't impact the experience of another tenant - either maliciously or accidentally?
 How do we onboard new tenants into the platform? 
 
-In the [next part]({{< relref "/posts/architecture-of-a-micro-paas-part3.md" >}}) of this series we will answer these questions using the wonders of Kubernetes, Istio and Auth0.
+In the [next part]({{< relref "/posts/anatomy-of-a-micro-paas-part3.md" >}}) of this series we will answer these questions using the wonders of Kubernetes, Istio and Auth0.

@@ -1,6 +1,6 @@
 +++
 author = "Mark Nuttall-Smith"
-title = "Architecture of a micro PaaS - part 1"
+title = "Anatomy of a micro PaaS - part 1"
 date = "2022-07-08"
 description = "How to build a micro PaaS using Kubernetes and Istio"
 tags = [
@@ -53,5 +53,8 @@ In more traditional finance, [QuantConnect](https://www.quantconnect.com/) is a 
 In the IoT world, the [ThingsBoard](https://thingsboard.io) rules engine allows you to write JavaScript to react to incoming events. 
 Something more fun, but no less valuable - [Code Combat](https://codecombat.com/) is a game-based learning platform that teaches kids how to code.
 
-The rise of tools such as Kubernetes and VSCode-for-the-Web has reduced the cost of developing a micro-PaaS dramatically, creating opportunities that wouldn't have been economically viable just a few years ago. The remainder of the posts in this series will describe _one possible_ architecture of such a system.
+The rise of tools such as Kubernetes and VSCode-for-the-Web has reduced the cost of developing a micro-PaaS dramatically, creating opportunities that wouldn't have been economically viable just a few years ago. 
+The remainder of the posts in this series will describe _one possible_ architecture of such a system.
+
+The [next post]({{< relref "/posts/anatomy-of-a-micro-paas-part2.md" >}}) continues with the example use case and presents the platform at a high level. 
 
