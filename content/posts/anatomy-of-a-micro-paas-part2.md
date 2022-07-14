@@ -36,7 +36,7 @@ If you want to know how it works, watch [this video](https://www.youtube.com/wat
 
 Let's stop thinking about how cool Bill Gates is for a moment, and discuss our value proposition. 
 
-Imagine we're a company with a data backbone built on Apache Kafka (and [who isn't](https://kafka.apache.org/powered-by) these days), and many business users who are using Excel (also not hard to imagine I hope).
+Imagine we're a company with a data backbone built on Apache Kafka (and [who isn't](https://kafka.apache.org/powered-by) these days), and many business users who are using Excel (also not hard to imagine I guess).
 
 We want to be able to easily connect the Excel users with the Kafka data, with small transformations as the data is in-flight. We want multiple users to be able to connect to the same connector, fanning-out the data feed. 
 We want the platform to be accessible to non-developers, so the connectors should be written in Python, as this the [most popular](https://statisticstimes.com/tech/top-computer-languages.php) and user-friendly language available. 

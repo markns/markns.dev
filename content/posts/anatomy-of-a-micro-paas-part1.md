@@ -29,7 +29,7 @@ while True:
 ```
 
 Learning some basic programming is also not that hard. 
-A language like Python has a syntax similar to English, and there are a huge amount of high-quality resources online to help beginners start coding.
+A language like Python has a syntax similar to English, and there are a huge variety of high-quality resources online to help beginners start coding.
 
 Learning the entire discipline of software engineering, on the other hand, can be a life's work.
 Non-functional requirements such as security, monitoring, version control, build systems, logging, dependency management, deployment, resource isolation ([and more!](https://en.wikipedia.org/wiki/Non-functional_requirement#Examples)) can easily turn one hour of coding into months of enterprise bureaucracy.
