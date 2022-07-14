@@ -8,7 +8,7 @@ tags = [
     "kubernetes",
     "PaaS",
 ]
-draft = true
+draft = false
 +++
 
 ## Kubernetes all the things 
