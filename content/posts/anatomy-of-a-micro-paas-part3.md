@@ -13,9 +13,6 @@ draft = true
 
 ## Kubernetes all the things 
 
-
-
-
 ## How does an Operator work?
 Operators work by extending the Kubernetes control plane and API server. 
 Operators allows you to define a Custom Controller that watches your application and performs custom tasks based on its state. 
@@ -26,8 +23,3 @@ That way, you can define any specific criteria in the custom spec to watch out f
 
 OpenAPI spec-first design
 Code gen
-
-Spec0fri
-
-
-subset of paths
