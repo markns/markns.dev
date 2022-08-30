@@ -1,6 +1,6 @@
 +++
 author = "Mark Nuttall-Smith"
-title = "Anatomy of a micro PaaS - part 2"
+title = "Anatomy of a domain-specific PaaS - a use case"
 date = "2022-07-12"
 description = "How to build a micro PaaS using Kubernetes and Istio"
 tags = [
@@ -11,8 +11,8 @@ tags = [
 draft = false
 +++
 
-In [part 1]({{< relref "/posts/anatomy-of-a-micro-paas-part1.md" >}}) of this series we discussed why and when a micro-PaaS can be useful. 
-This post will present a specific micro-PaaS use case.
+In [part 1]({{< relref "/posts/domain-specific-paas/what-is-a-domain-specific-paas" >}}) of this series we discussed why and when a domain-specific PaaS can be useful. 
+This post will present a specific use case.
 Part 3 will show how we can build our platform by customizing Kubernetes through its native extension points. 
 
 ## But first, dancing Bill Gates.
@@ -30,7 +30,7 @@ We also managed to stream a grooving Bill Gates into Excel.
 
 ![epic dance](/images/epic-dance.gif)
 
-If you want to know how it works, watch [this video](https://www.youtube.com/watch?v=UBX2QQHlQ_I) and imagine that the RGB values are being streamed in a loop into the spreadsheet. Alright, I know what you're thinking: 🤯, but what does this have to do with a micro-PaaS exactly? 
+If you want to know how it works, watch [this video](https://www.youtube.com/watch?v=UBX2QQHlQ_I) and imagine that the RGB values are being streamed in a loop into the spreadsheet. Alright, I know what you're thinking: 🤯, but what does this have to do with a domain-specific PaaS exactly? 
 
 ## The value proposition
 
@@ -39,7 +39,7 @@ Let's stop thinking about how cool Bill Gates is for a moment, and discuss our v
 Imagine we're a company with a data backbone built on Apache Kafka (and [who isn't](https://kafka.apache.org/powered-by) these days), and many business users who are using Excel (also not hard to imagine I guess).
 
 We want to be able to easily connect the Excel users with the Kafka data, with small transformations as the data is in-flight. We want multiple users to be able to connect to the same connector, fanning-out the data feed. 
-We want the platform to be accessible to non-developers, so the connectors should be written in Python, as this the [most popular](https://statisticstimes.com/tech/top-computer-languages.php) and user-friendly language available. 
+We want the platform to be accessible to non-developers, so the connectors should be written in Python, as this is the [most popular](https://statisticstimes.com/tech/top-computer-languages.php) and user-friendly language available. 
 There should be a simple API for consuming data from Kafka, and a simple API for streaming data to Excel.
 Let's call the platform AeroGrid. 
 
@@ -77,7 +77,7 @@ This is how it might look:
 
 ![product sum](/images/product_sum.gif)
 
-We won't dig too much further into the architecture of the core product, since it will be different for every micro-PaaS.
+We won't dig too much further into the architecture of the core product, since it will be different for every domain-specific PaaS.
 But let's just say that this one could be built using [aiokafka](https://github.com/aio-libs/aiokafka) and a [gRPC streaming server](https://grpc.io/docs/what-is-grpc/core-concepts/#server-streaming-rpc) on the Python side, and the fantastic [Excel-DNA](https://github.com/Excel-DNA/ExcelDna) library on the client side for the add-in.
 
 Here's a sketch:
