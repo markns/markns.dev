@@ -74,8 +74,8 @@ params:
   # Extra links in navigation
   links:
     ## e.g.
-#     - name: Projects
-#       path: /projects
+     - name: Projects
+       path: /projects
 
   # You can put your custom css and js to `static` directory, or use remote css and js files which start with `http://` or `https://`
   customCSS:
@@ -86,8 +86,3 @@ params:
     ## e.g.
     # - js/custom.js # local js in `static/js/custom.js`
     # - https://example.com/custom.js # remote js
-
-module:
-  imports:
-    - path: github.com/nodejh/hugo-theme-mini
-      disable: false
