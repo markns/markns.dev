@@ -1,6 +1,6 @@
 +++
 author = "Mark Nuttall-Smith"
-title = "Anatomy of a micro PaaS - Kubernetes, Istio and Auth0"
+title = "Anatomy of a domain-specific PaaS - Kubernetes, Istio and Auth0"
 date = "2022-08-30"
 description = "How to build a micro PaaS using Kubernetes and Istio"
 tags = [
@@ -96,4 +96,8 @@ The image controller will determine if a suitable image exists in our docker reg
 If a build is required, the image controller will create a `Job` resource configured to run a [Kaniko](https://github.com/GoogleContainerTools/kaniko) container.
 Kaniko is a tool to build container images from a Dockerfile, inside a container or Kubernetes cluster.
 Once the Kaniko job is complete, the new image is pushed to the registry, our image controller is notified, and the new image tag can be updated on the app spec, causing the app controller to run through its control loop again.
+
+-- image build diagram
+
+# Get connected
 
