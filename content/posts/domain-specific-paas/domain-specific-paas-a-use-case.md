@@ -13,7 +13,7 @@ draft = false
 
 In [part 1]({{< relref "/posts/domain-specific-paas/what-is-a-domain-specific-paas" >}}) of this series we discussed why and when a domain-specific PaaS can be useful. 
 This post will present a specific use case.
-Part 3 will show how we can build our platform by customizing Kubernetes through its native extension points. 
+[Part 3]({{< relref "/posts/domain-specific-paas/kubernetes-istio-auth0" >}}) will show how we can build our platform by customizing Kubernetes through its native extension points. 
 
 ## But first, dancing Bill Gates.
 
@@ -114,4 +114,4 @@ How do we identify users and ensure they are authorized to perform the actions t
 How do we make sure the behaviour of one tenant in the system doesn't impact the experience of another tenant - either maliciously or accidentally?
 How do we onboard new tenants into the platform? 
 
-In the next part of this series we will answer these questions using the wonders of Kubernetes, Istio and Auth0.
+In the [next part]({{< relref "/posts/domain-specific-paas/kubernetes-istio-auth0" >}}) of this series we will answer these questions using the wonders of Kubernetes, Istio and Auth0.
