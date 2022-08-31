@@ -101,3 +101,13 @@ Once the Kaniko job is complete, the new image is pushed to the registry, our im
 
 # Get connected
 
+Pods running the right image on a node within our cluster is a big step in the right direction.
+But pods can be stopped and rescheduled to other nodes for any number of reasons, and the IP they are assigned within the cluster is ephemeral.
+We need to be route traffic reliably to our workloads, so we need a stable network address.
+This is the job of Kubernetes `Service`s.
+
+Services give us a stable way of finding our pods withing the cluster, but we also need traffic from our clients outside the  cluster to be able to reach the pods.
+In Kubernetes, this is the responsibility of the `Ingress` resource and the ingress controller.
+There are many types of ingress controller, maintained by the Kubernetes project, and by independent vendors.
+
+We For our example however we'll use Istio
