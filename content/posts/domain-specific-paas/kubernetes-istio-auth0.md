@@ -62,7 +62,38 @@ The CRD API gives us a way of managing the state of the apps we *want* running i
 We need to implement the behaviours required to transform our desires into reality ✨.
 This is the work of [Kubernetes operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
-ℹ️ A quick aside - there's a lot of overlap between the CoreOS operator terminology and the native Kubernetes controller terminology.
+ℹ️ A quick aside - there's [a lot of overlap](https://github.com/kubeflow/training-operator/issues/300) between the CoreOS "operator" terminology and the native Kubernetes "controller" terminology.
 Putting it very briefly, an operator is a domain-specific controller.
-[Further reading here](https://github.com/kubeflow/training-operator/issues/300)
+
+Taking inspiration from the world of robotics, a Kubernetes operator observes the desired state of a resource, and performs actions to bring reality in line with desire.
+This is the principle of the robotic control loop.
+The benefit is that distributed systems are unreliable, subject to Byzantine failure, and generally very difficult to reason about.
+(TODO: more on why the operator pattern is useful for distributed systems)
+
+There are SDKs available that make it quite straightforward to developer Operators in several languages.
+For example, [Golang](https://sdk.operatorframework.io/), [Java](https://javaoperatorsdk.io/) and [Python](https://github.com/nolar/kopf).
+
+When we create a new `app.aerogrid.io` resource, we ultimately want a new container to be run with our code and dependencies installed within.
+[`Pods`](https://kubernetes.io/docs/concepts/workloads/pods/) are the basic unit of deployment in Kubernetes, but it's not recommended to create pods directly.
+Rather we should use a `Deployment` resource, which can be used to define rollout, scaling and rollback characteristics.
+
+When a user creates a new app in the platform, our app operator will be notified, and will be responsible for creating a new deployment resource.
+In turn, the deployment controller will be notified of the new deployment resource, and will create a new `ReplicaSet` resource.
+The replicaset controller will then create a number of pod resources (according to the `spec.replicas` config in the deployment).
+Next, the `kube-scheduler` component will see that pods have been created without an assigned `Node` and wll select an appropriate node for them to run on.
+Finally, the `kubelet` agents running on the involved nodes will actually start the required containers.
+
+-- Insert operator diagram here.
+
+# Maintaining the right image at all times
+
+But wait! I hear you say, don't we need to have an image to run in the first place?
+We do indeed, and because we want to allow our users to install packages using `requirements.txt`, we can't just use the same image for all the apps.
+We need to be able to build an image in the cluster if required.
+
+So, before creating the deployment resource, the app operator will create an custom `Image` resource (let's assume we registered it previously), copying the files into it by means of a `ConfigMap` resource.
+The image controller will determine if a suitable image exists in our docker registry, or if an image build process needs to be started.
+If a build is required, the image controller will create a `Job` resource configured to run a [Kaniko](https://github.com/GoogleContainerTools/kaniko) container.
+Kaniko is a tool to build container images from a Dockerfile, inside a container or Kubernetes cluster.
+Once the Kaniko job is complete, the new image is pushed to the registry, our image controller is notified, and the new image tag can be updated on the app spec, causing the app controller to run through its control loop again.
 
