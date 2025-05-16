@@ -41,8 +41,6 @@ Another very nice feature of the API generated for the CRD is that it is fully d
 This means we can use [code generation tools](https://github.com/OpenAPITools/openapi-generator) to generate idiomatic, strongly typed client libraries in a variety of languages.
 For our example use case we want to generate TypeScript and dotnet clients for use in a web console and in the Excel add-in.
 
--- Insert CRD API diagram
-
 So, what fields do we need in our new `app.aerogrid.io` CRD? 
 All Kubernetes resources must have a [metadata](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata) property containing name, namespace and UID fields, so that is taken care of.
 Most obviously, we also need somewhere to put our code, so let's add a list of files to the CRD spec.
@@ -76,7 +74,6 @@ The replicaset controller will then create a number of pod resources (according 
 Next, the `kube-scheduler` component will see that pods have been created without an assigned `Node` and wll select an appropriate node for them to run on.
 Finally, the `kubelet` agents running on the involved nodes will actually start the required containers.
 
--- Insert operator diagram here.
 
 # Maintaining the right image at all times
 
@@ -90,8 +87,6 @@ If a build is required, the image controller will create a `Job` resource config
 Kaniko is a tool to build container images from a Dockerfile, inside a container or Kubernetes cluster.
 Once the Kaniko job is complete, the new image is pushed to the registry, our image controller is notified, and the new image tag can be updated on the app spec, causing the app controller to run through its control loop again.
 
--- image build diagram
-
 # Get connected
 
 Pods running the right image on a node within our cluster is a big step in the right direction.
@@ -104,8 +99,6 @@ In Kubernetes, this is the responsibility of the `Ingress` resource and the ingr
 There are many types of ingress controller, maintained by the Kubernetes project, and by independent vendors.
 
 For our example, however, we'll use Istio as both our ingress controller and service mesh. Istio provides powerful features like traffic management, observability, and security for service-to-service communication.
-
--- Insert Istio mesh diagram here
 
 # Ingress with Istio Gateway and VirtualService
 
