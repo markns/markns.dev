@@ -12,13 +12,6 @@ tags = [
 draft = false
 +++
 
---------
-⚠️ Please note, this is a very early draft. 
-Revisions and diagrams coming soon!
---------
-
---------
-
 In [part 1]({{< relref "/posts/domain-specific-paas/what-is-a-domain-specific-paas" >}}) of this series we discussed why and when a domain-specific PaaS can be useful.
 [Part 2]({{< relref "/posts/domain-specific-paas/domain-specific-paas-a-use-case.md" >}}) continued with the example use case and presented the platform at a high level.
 In this post, we'll get into the technical details of how we might implement a domain-specific PaaS using Kubernetes, Istio and Auth0.
@@ -87,7 +80,7 @@ Finally, the `kubelet` agents running on the involved nodes will actually start 
 
 # Maintaining the right image at all times
 
-But wait! I hear you say, don't we need to have an image to run in the first place?
+"But wait!", I hear you say, don't we need to have an image to run in the first place?
 We do indeed, and because we want to allow our users to install packages using `requirements.txt`, we can't just use the same image for all the apps.
 We need to be able to build an image in the cluster if required.
 
@@ -110,4 +103,126 @@ Services give us a stable way of finding our pods withing the cluster, but we al
 In Kubernetes, this is the responsibility of the `Ingress` resource and the ingress controller.
 There are many types of ingress controller, maintained by the Kubernetes project, and by independent vendors.
 
-We For our example however we'll use Istio
+For our example, however, we'll use Istio as both our ingress controller and service mesh. Istio provides powerful features like traffic management, observability, and security for service-to-service communication.
+
+-- Insert Istio mesh diagram here
+
+# Ingress with Istio Gateway and VirtualService
+
+Instead of a standard Kubernetes Ingress, we define an Istio Gateway and VirtualService to route external traffic into our cluster:
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: aerogrid-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+```
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: aerogrid-app-routing
+spec:
+  hosts:
+  - "apps.aerogrid.example.com"
+  gateways:
+  - aerogrid-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /apps
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: {{ appName }}.apps.svc.cluster.local
+        port:
+          number: 80
+```
+
+This configuration sends requests from `/apps/{appName}` on the public hostname to the corresponding service in the cluster.
+
+# Service-to-Service Security with mTLS
+
+Istio can automatically enable mutual TLS (mTLS) between all service-to-service traffic, ensuring encryption and identity verification:
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default-mtls
+spec:
+  mtls:
+    mode: STRICT
+```
+
+With this in place, all pods in the mesh will communicate over encrypted channels without any changes to the application code.
+
+# End-User Authentication with Auth0
+
+To secure our public API and identify users, we delegate authentication to Auth0. We register our AeroGrid API in Auth0 and configure a JSON Web Key Set (JWKS) endpoint. Then we apply an Istio `RequestAuthentication` policy to validate incoming JWTs:
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: jwt-auth
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  jwtRules:
+  - issuer: "https://YOUR_AUTH0_DOMAIN/"
+    jwksUri: "https://YOUR_AUTH0_DOMAIN/.well-known/jwks.json"
+```
+
+Next, we enforce access control with an `AuthorizationPolicy`:
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: aerogrid-authz
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: aerogrid-api
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["https://YOUR_AUTH0_DOMAIN/*"]
+```
+
+This policy ensures that only requests with a valid Auth0 JWT are allowed to reach our app API.
+
+# Observability and Metrics
+
+Istio also gives us fine-grained telemetry out of the box, including metrics (via Prometheus), distributed tracing (via Jaeger), and logging. We can use these tools to monitor app health, performance, and usage.
+
+# Multi-Tenancy and Isolation
+
+By combining Kubernetes namespaces, Istio policies, and Auth0, we can isolate tenants in AeroGrid:
+
+- Each tenant gets its own Kubernetes namespace.
+- Istio `PeerAuthentication` and `AuthorizationPolicy` restrict traffic across namespaces.
+- Auth0 uses scopes or claims to identify tenant membership.
+
+# Conclusion
+
+In this post, we've seen how Istio can handle ingress, service mesh security, and end-user authentication via Auth0, all without modifying application code. With Kubernetes CRDs and Operators automating deployment, and Istio managing traffic and security, our AeroGrid platform delivers a powerful, easy-to-use domain-specific PaaS.
+
+In the next part of this series, we'll dive deeper into observability and scaling, exploring how to maintain performance as our user base grows.

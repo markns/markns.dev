@@ -1,10 +1,25 @@
 # Hi, I'm Mark!
 
-I am a passionate technologist who loves to work with domain experts to discuss requirements, understand problems deeply, and provide creative and efficient solutions. 
+I am an innovative and results-driven technology consultant with deep expertise in data engineering, machine learning, cloud architecture, and software development. 
+I specialise in helping businesses solve complex technical challenges — whether it’s optimising cloud infrastructure, improving data workflows, or implementing scalable ML solutions.
 
-Highly technical, but always with an eye on the true goals of a project, I'm happy to start working from a blank canvas with architectural sketches on a whiteboard, through consideration of the scalability, performance and security of a solution, all the way down to the nuts and bolts of an implementation itself. 
+A highly technical yet business-aware professional, I thrive in dynamic environments — guiding projects from high-level architecture through to full-scale implementation. My background includes leading engineering teams, architecting distributed systems, and working across diverse industries including finance, agriculture, and biotech.
 
 # Experience
+
+### Apollo Agriculture, Amsterdam, NL / Nairobi, Kenya
+#### Staff Engineer
+##### Nov 2022 - Mar 2025
+
+Orchestrated a full migration of Apollo’s analytics platform from PostgreSQL to Snowflake, significantly boosting reliability and cutting costs.
+
+Developed and deployed region-specific time-series forecasting models for sales and inventory, improving demand-planning accuracy and reducing stock-out incidents.
+
+Architected and implemented end-to-end ETL workflows using Prefect, establishing a modular, retry-safe pipeline framework for all internal and external data sources.
+
+Developed an automated fraud-detection system—combining statistical anomaly detection and graph-based ML—to flag irregular loan applications.
+
+Led the build of a conversational Generative AI agronomy assistant using LangChain and OpenAI, enabling scalable, on-demand crop-management advice.
 
 ### Flow Traders, Amsterdam, NL
 #### Lead Developer / Team Lead 
